@@ -1,3 +1,10 @@
+<?php
+if (!isset($_POST['submit'])) {
+    header("location:register.php");
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +18,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 0;
             margin: 0;
-            box-sizing: border-box;    
+            box-sizing: border-box;
         }
 
-        body{
+        body {
             padding: 0px 150px;
         }
 
@@ -114,7 +121,7 @@
         </nav>
 
     </header>
-    
+
 </body>
 
 </html>

@@ -2,6 +2,19 @@
 include "koneksi.php";
 // echo $s;
 // die();
+
+$uniqueString = uniqid();
+$unik = crc32($uniqueString);
+if (isset($_POST['submit'])) {
+    // $unik = uniqid(integer);
+    echo $unik;
+    mysqli_query($koneksi, "INSERT INTO `users`(`user_id`, `username`, `email`, `password`, `role`) VALUES ('$unik','$_POST[username]','$_POST[email]','$_POST[password]','member')");
+    // echo $unik;
+    // echo "berhasil";
+    // header("location:menu.php");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +28,7 @@ include "koneksi.php";
 <body>
 
     <h2>register</h2>
-    <form action="" method="POST">
+    <form action="menu.php" method="POST">
         <table>
             <tr>
                 <td for="username">Username:</td>
@@ -38,18 +51,7 @@ include "koneksi.php";
 </body>
 
 </html>
-<?php
+<?php 
 
-
-$uniqueString = uniqid();
-$unik = crc32($uniqueString);
-if (isset($_POST['submit'])) {
-    // $unik = uniqid(integer);
-    echo $unik;
-    mysqli_query($koneksi, "INSERT INTO `users`(`user_id`, `username`, `email`, `password`, `role`) VALUES ('$unik','$_POST[username]','$_POST[email]','$_POST[password]','member')");
-    // echo $unik;
-    // echo "berhasil";
-    header("location:menu.php");
-}
 
 ?>

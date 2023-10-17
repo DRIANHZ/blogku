@@ -1,8 +1,9 @@
-<?php
-include "koneksi.php";
-// echo $s;
-// die();
-?>
+<!-- <?php
+        include "koneksi.php";
+        
+        // echo $s;
+        // die();
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,23 +37,21 @@ include "koneksi.php";
 </html>
 <?php
 
+if(isset($_POST['submit'])){
 
-$uniqueString = uniqid();
-$unik = crc32($uniqueString);
-if (isset($_POST['submit'])) {
-    // $unik = uniqid(integer);
-    $kondisi1 = mysqli_query($koneksi, "SELECT `username` FROM `users` WHERE `username` = '$_POST[username]'");
-
-    // echo isset($kondisi1);
-    // if(isset($kondisi1)){
-    //     echo "berhasil";
-    // }//else{
-    //     echo "password atau username yang anda input mungkin salah";
-    // }
-
-    // header("location:register.php");
-    // echo $unik;
-    // echo "berhasil";
+    if($_POST['username'] == 'ADMIN' &&
+    $_POST['password'] == 'ADMIN'
+    ){
+        header('location:admin.php');
+    }else{
+        $cek = mysqli_query($koneksi,"SELECT * FROM `users` WHERE username = '$_POST[username]' AND password = '$_POST[password]'");
+        if(!isset($cek)){
+            header("location:login.php");
+            echo "password atau nama mungkin slalah";
+        }
+        header('location:menu.php');
+    }
 }
 
-?>
+
+?> -->
